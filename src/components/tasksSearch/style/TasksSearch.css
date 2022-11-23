@@ -1,0 +1,21 @@
+.tasksSearch {
+    width: 100%;
+    transition: .4s;
+    margin-bottom: 3em;
+}
+
+.tasksSearch input {
+    border-radius: 4px;
+    width: 100%;
+    height: 2.5em;
+    margin: 0;
+    background: #181818;
+    border: 0;
+    color: white;
+    outline-width: 0;
+}
+
+.tasksSearch:hover {
+    background-color: black;
+    width: 105%;
+}

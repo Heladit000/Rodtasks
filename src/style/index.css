@@ -1,0 +1,17 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+  width: 100vw;
+  min-height: 100vh;
+  background: #242424;
+  color: white;  
+}
+

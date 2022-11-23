@@ -1,8 +1,9 @@
 import React from "react";
+import "./style/TasksSearch.css"
 
 const TasksSearch = () => {
   return (
-    <div>
+    <div className="tasksSearch">
       <input placeholder="write on me" />
     </div>
   );

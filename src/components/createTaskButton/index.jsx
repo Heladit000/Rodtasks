@@ -1,8 +1,9 @@
 import React from 'react';
+import "./style/CreateTaskButton.css"
 
 const CreateTaskButton = () => {
     return (
-        <button>+</button>
+        <button className="createTaskButton"><h1>+</h1></button>
     );
 };
 

@@ -1,0 +1,22 @@
+.createTaskButton {
+    position: fixed;
+    top: 86%;
+    left: 77%;
+    background-color: #00b7ff;
+    box-shadow: -2px -2px 4px #0000007e;
+    border: 0;
+    border-radius: 40%;
+    color: white;
+    width:5em;
+    height: 5em;
+    cursor: pointer;
+    user-select: none;
+}
+
+.createTaskButton h1 {
+    transition: .4s;
+}
+
+.createTaskButton:hover h1 {
+    transform: rotate(90deg);
+}

@@ -1,8 +1,9 @@
 import React from 'react';
+import "./style/TasksList.css"
 
 const TasksList = (props) => {
     return (
-        <div>
+        <div className="tasksList">
             {props.children}
         </div>
     );
