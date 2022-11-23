@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+//import logo from './logo.svg';
+//import './App.css';
+
+import React from "react";
+import TasksCounter from "./components/tasksCounter";
+import TasksSearch from "./components/tasksSearch";
+import TasksList from "./containers/tasksList";
+import TaskCard from "./containers/tasksList/taskCard";
+
+
+const tasks = [
+  {text: "cut hair", completed: false},
+  {text: "do rodtasks", completed: false},
+  {text: "have a good time with my love", completed: false},
+]
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <TasksCounter/>
+      <TasksSearch/>
+      <TasksList>
+        {tasks.map((task)=>(
+          <TaskCard text={task.text}/>
+        ))}
+      </TasksList>
+    </React.Fragment>
   );
 }
 
