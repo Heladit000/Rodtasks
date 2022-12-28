@@ -1,9 +1,9 @@
 import React from "react";
 
-const TasksCounter = () => {
+const TasksCounter = ({allTasks,completedTasks}) => {
   return (
     <div>
-      <h1>You have 3 of 5 tasks completed</h1>
+      <h1>You have completed {completedTasks} of {allTasks} tasks</h1>
     </div>
   );
 };
