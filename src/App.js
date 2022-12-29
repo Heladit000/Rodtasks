@@ -17,22 +17,37 @@ const useLocalStorage = (itemName, defaultItems) => {
 
   //INFO: you can use default React Hooks in your custom hook
 
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const [items, setItems] = useState([]);
 
   useEffect(() => {
     //check if localStorage have data
-    const localStorageItems = localStorage.getItem(itemName);
-    let parsedItems;
 
-    if (!localStorageItems) {
-      localStorage.setItem(itemName, JSON.stringify(defaultItems));
-      parsedItems = defaultItems;
+    setTimeout(() => {
+      try {
+        const localStorageItems = localStorage.getItem(itemName);
+        let parsedItems;
 
-    } else {
-      parsedItems = JSON.parse(localStorageItems);
-    }
+        if (!localStorageItems) {
+          localStorage.setItem(itemName, JSON.stringify(defaultItems));
+          parsedItems = defaultItems;
 
-    setItems(parsedItems);
+        } else {
+          parsedItems = JSON.parse(localStorageItems);
+        }
+
+        setItems(parsedItems);
+      }
+      catch (error) {
+        setError(true);
+      }
+
+      setLoading(true);
+
+    }, 1000);
+
   }, [itemName, defaultItems]);
 
 
@@ -44,14 +59,14 @@ const useLocalStorage = (itemName, defaultItems) => {
   }
 
   //return array
-  return [
-    items, updateItems
-  ]
+  return {
+    items, updateItems, loading, error
+  }
 }
 
 function App() {
 
-  const [tasks, setTasks] = useLocalStorage("RODTASKS_V1_TASKS", defaultTasks);
+  const { items: tasks, updateItems: setTasks, loading, error } = useLocalStorage("RODTASKS_V1_TASKS", defaultTasks);
 
   const [searchList, setSearchList] = useState(tasks);
 
@@ -67,20 +82,29 @@ function App() {
       />
       <TasksSearch tasks={tasks} setSearchList={setSearchList} />
       <TasksList>
-        {searchList.length === 0 ? (
-          tasks.length === 0 ? <h1>No tasks, click (+) and add tasks!</h1> : <h1>Not Found</h1>
-        ) : (
-          searchList.map((task) => (
-            <TaskCard
-              key={task.text}
-              text={task.text}
-              completed={task.completed}
-              tasks={tasks}
-              searchList={searchList}
-              setTasks={setTasks}
-            />
-          ))
-        )}
+
+        {/* API cases */}
+        {error && <h1>Error!</h1>}
+        {!loading && <h1 >loading...</h1>}
+
+        {tasks.length === 0 && loading && !error ? <h1>No tasks, click (+) and add tasks!</h1> :
+          searchList.length === 0 && loading && !error ? (
+            <h1>Not Found</h1>
+          ) : (
+            searchList.map((task) => (
+              <TaskCard
+                key={task.text}
+                text={task.text}
+                completed={task.completed}
+                tasks={tasks}
+                searchList={searchList}
+                setTasks={setTasks}
+              />
+            ))
+          )
+        }
+
+
       </TasksList>
       <CreateTaskButton />
     </div>
