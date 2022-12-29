@@ -1,29 +1,36 @@
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
+
 import "./style/TasksSearch.css";
 
 const TasksSearch = ({ tasks, setSearchList }) => {
   const [searchValue, setSearchValue] = useState("");
 
-  const handleSearch = (e) => {
-    if (e.target.value === 0) {
+  //listen tasks and searchValue changes
+  useEffect(() => {
+    //filter tasks
+
+    const filteredTasks = tasks.filter((task) => {
+      const convertedText = task.text.toLowerCase();
+      const convertedValue = searchValue.toLowerCase();
+
+      return convertedText.includes(convertedValue);
+    });
+
+    if (searchValue === 0) {
       setSearchList(tasks);
     } else {
-      setSearchValue(e.target.value);
-
-      const filterTasks = tasks.filter((task) => {
-        const convertedText = task.text.toLowerCase();
-        const convertedValue = e.target.value.toLowerCase();
-
-        return convertedText.includes(convertedValue);
-      });
-
-      setSearchList(filterTasks);
+      setSearchList(filteredTasks);
     }
+  }, [tasks, searchValue, setSearchList]);
+
+  const handleSearch = (e) => {
+    setSearchValue(e.target.value);
   };
 
   return (
-    <div className="tasksSearch">
+    <div className="tasks-search">
       <input
         value={searchValue}
         onChange={handleSearch}

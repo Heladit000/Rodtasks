@@ -2,44 +2,25 @@ import React from "react";
 
 import "./style/TaskCard.css";
 
-const TaskCard = ({
-  text,
-  completed,
-  tasks,
-  searchList,
-  setTasks,
-  setSearchList,
-}) => {
+const TaskCard = ({ text, completed, tasks, setTasks }) => {
   const handleDelete = () => {
     const indexFilterTask = tasks.findIndex((task) => task.text === text);
-    const indexFilterSearchTask = searchList.findIndex(
-      (task) => task.text === text
-    );
 
     const copyTasks = [...tasks];
-    const copySearchList = [...searchList];
 
     copyTasks.splice(indexFilterTask, 1);
-    copySearchList.splice(indexFilterSearchTask, 1);
 
     setTasks(copyTasks);
-    setSearchList(copySearchList);
   };
 
   const handleComplete = () => {
     const indexFilterTask = tasks.findIndex((task) => task.text === text);
-    const indexFilterSearchTask = searchList.findIndex(
-      (task) => task.text === text
-    );
 
     const copyTasks = [...tasks];
-    const copySearchList = [...searchList];
 
     copyTasks[indexFilterTask].completed = true;
-    copySearchList[indexFilterSearchTask].completed = true;
 
     setTasks(copyTasks);
-    setSearchList(copySearchList);
   };
 
   return (
