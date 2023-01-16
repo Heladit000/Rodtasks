@@ -1,10 +1,15 @@
 import React from "react";
+import { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { TaskContext } from "../../context/taskContext";
 
 import "./style/TasksSearch.css";
 
-const TasksSearch = ({ tasks, setSearchList }) => {
+const TasksSearch = () => {
+
+  const {tasks, setSearchList} = useContext(TaskContext);
+
   const [searchValue, setSearchValue] = useState("");
 
   //listen tasks and searchValue changes

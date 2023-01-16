@@ -1,63 +1,69 @@
 .taskCard {
-    border-radius: 4px;
-    display: flex;
-    position: relative;
-    padding: 0.6em;
-    color: #00b7ff;
-    width: 100%;
-    background-color: #131313;
-    box-shadow: 1px 1px 1px black;
-    align-items: center;
+  border-radius: 4px;
+  display: flex;
+  position: relative;
+  padding: 0.6em;
+  color: #00b7ff;
+  width: 100%;
+  background-color: #131313;
+  box-shadow: 1px 1px 1px black;
+  align-items: center;
 }
 
 .taskCard__deleteButton {
-    color: #9b9b9b;
-    position:absolute;
-    top: -13%;
-    left: 93%;
-    transition: .2s;
-    cursor: pointer;
-    background-color: black;
-    border-radius: 4px;
-    user-select: none;
+  color: #9b9b9b;
+  position: absolute;
+  top: -13%;
+  left: 93%;
+  transition: 0.2s;
+  cursor: pointer;
+  background-color: black;
+  border-radius: 4px;
+  user-select: none;
 }
 
 .taskCard__deleteButton:hover {
-    color: red;
+  color: red;
 }
 
 .taskCard-checkbox {
-    background-color: #444444;
-    border-radius: 1px;
-    height: 1.2em;
-    width: 1.2em;
-    text-align: center;
-    color: transparent;
-    margin-right: 1.2em;
-    cursor: pointer;
-    transition: .2s;
-    user-select: none;
+  background-color: #444444;
+  border-radius: 1px;
+  height: 1.2em;
+  width: 1.2em;
+  text-align: center;
+  color: transparent;
+  margin-right: 1.2em;
+  cursor: pointer;
+  transition: 0.2s;
+  user-select: none;
+  stroke: #272727 ;
 }
 
 .taskCard-checkbox:hover {
-    color: #d4d4d4;
+    stroke: white;
 }
 
 .taskCard-checkbox-completed {
-    background-color: transparent;
-    color: #00b7ff;
-    cursor: default;
+  background: transparent;
+
+  stroke: #00b7ff;
+  cursor: default;
 }
 
 .taskCard-checkbox-completed:hover {
-    color: currentColor;
+  stroke: #00b7ff;
+
+}
+
+.taskCard-checkbox-completed:hover {
+  color: currentColor;
 }
 
 .taskCard-checkbox__check {
-    margin: 0;
+  margin: 0;
 }
 
-
 .taskCard__text-completed {
-    text-decoration:line-through
+  text-decoration: line-through;
 }

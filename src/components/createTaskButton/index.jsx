@@ -1,10 +1,22 @@
-import React from 'react';
-import "./style/CreateTaskButton.css"
+import React from "react";
+import { useContext } from "react";
+import { ReactSVG } from "react-svg";
+
+import { ModalContext } from "../../context/modalContext";
+import "./style/CreateTaskButton.css";
+
+import addIcon from "../../icons/add__icon.svg"
 
 const CreateTaskButton = () => {
-    return (
-        <button className="createTaskButton"><h1>+</h1></button>
-    );
+  const { viewModal, toggleModal } = useContext(ModalContext);
+
+  return (
+    <div>
+      <button className={`create-task-button ${viewModal ? "create-task-button-close" : ""}`} onClick={toggleModal}>
+        <ReactSVG src={addIcon} className="create-task-button__icon"/>
+      </button>
+    </div>
+  );
 };
 
 export default CreateTaskButton;

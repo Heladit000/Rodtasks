@@ -1,0 +1,6 @@
+.create-task {
+  background: #a1a1a136;
+  padding: 1em;
+  backdrop-filter: blur(2px);
+  min-height: 20em;
+}
