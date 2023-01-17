@@ -5,7 +5,7 @@ import TasksCounter from "./components/tasksCounter";
 import TasksSearch from "./components/tasksSearch";
 import TasksList from "./containers/tasksList";
 import TaskCard from "./containers/tasksList/taskCard";
-import "./style/App.css";
+import "./style/App.scss";
 
 import { TaskContext } from "./context/taskContext";
 import CreateTaskModal from "./containers/CreateTaskModal";
@@ -21,7 +21,6 @@ const App = () => {
     <>
     <Background/>
     <div className="tasks-container">
-      <div>
         <TasksCounter />
         <TasksSearch />
         <TasksList>
@@ -38,7 +37,8 @@ const App = () => {
             ) : (
               searchList.map((task) => (
                 <TaskCard
-                  key={task.text}
+                  key={task.id}
+                  id={task.id}
                   text={task.text}
                   completed={task.completed}
                 />
@@ -50,7 +50,6 @@ const App = () => {
         </TasksList>
         <CreateTaskButton />
         <CreateTaskModal />
-      </div>
     </div>
     </>
     

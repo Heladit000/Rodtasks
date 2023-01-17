@@ -1,0 +1,13 @@
+@import "@styles/responsive.scss";
+
+
+.tasks-container {
+    justify-content: center;
+    flex-direction: column;
+    padding: 1.2em;
+    height: 100vh;
+
+    @include desktop {
+        padding: 1.2em 20em;
+    }
+}

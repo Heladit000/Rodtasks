@@ -18,7 +18,13 @@ const Background = () => {
   }, []);
   return (
     <div className="background">
-      <img src={backgroundImage} alt="" />
+      {backgroundImage && (
+        <img
+          src={backgroundImage}
+          alt="bg_image"
+          className="background__image"
+        />
+      )}
       <CompleteColor />
     </div>
   );

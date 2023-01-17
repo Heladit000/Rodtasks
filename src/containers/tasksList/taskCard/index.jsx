@@ -1,20 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
-import { TaskContext } from "../../../context/taskContext";
+import TextareaAutosize from "react-textarea-autosize";
 
+import { TaskContext } from "../../../context/taskContext";
 import CheckIcon from "../../../icons/check__icon.svg";
 import "./style/TaskCard.css";
 
-const TaskCard = ({ text, completed }) => {
-  const { toggleCompleteTask, deleteTask} = useContext(TaskContext);
+const TaskCard = ({ id, text, completed }) => {
+  const { toggleCompleteTask, deleteTask, updateTaskText } =
+    useContext(TaskContext);
+  const [editText, setEditText] = useState(text);
 
   const handleDelete = () => {
-    deleteTask(text);
+    deleteTask(id);
   };
 
   const handleComplete = () => {
-    toggleCompleteTask(text);
+    toggleCompleteTask(id);
   };
+
+  const handleOnChange = (e) => {
+    setEditText(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updateTaskText(id, editText);
+  };
+
+  const handleDiscard = () => {
+    setEditText(id);
+  }
 
   return (
     <div className="taskCard">
@@ -29,12 +45,26 @@ const TaskCard = ({ text, completed }) => {
           }`}
           onClick={handleComplete}
         >
-          <CheckIcon className="taskCard-checkbox__icon"/>
+          <CheckIcon className="taskCard-checkbox__icon" />
         </div>
       </span>
-      <p className={completed ? "taskCard__text-completed" : undefined}>
-        {text}
-      </p>
+
+      <form onSubmit={handleSubmit} className="taskCard__form">
+        <TextareaAutosize
+          className={`taskCard__text default__input ${
+            completed ? "taskCard__text-completed" : ""
+          }`}
+          value={editText}
+          onChange={handleOnChange}
+        />
+        {editText !== text && (
+          <div className="taskCard__edit-panel">
+            <button onClick={handleDiscard} className="default__button default__button-warning">Discard</button>
+            <button type="submit" className="default__button">Save</button>
+          </div>
+        )}
+      </form>
+
       <span className="taskCard__deleteButton" onClick={handleDelete}>
         X
       </span>

@@ -1,14 +1,9 @@
+import { nanoid } from "nanoid";
 import React from "react";
 import { useState } from "react";
 import { createContext } from "react";
 
 import useLocalStorage from "../hooks/useLocalStorage";
-
-const defaultTasks = [
-  { text: "cut hair", completed: true },
-  { text: "do rodtasks", completed: true },
-  { text: "have a good time with my love", completed: false },
-];
 
 const TaskContext = createContext();
 
@@ -18,21 +13,16 @@ const TaskProvider = ({ children }) => {
     updateItems: setTasks,
     loading,
     error,
-  } = useLocalStorage("RODTASKS_V1_TASKS", defaultTasks);
-
-  const taskTemplate = {
-    completed: false,
-    text: "my Task",
-  };
+  } = useLocalStorage("RODTASKS_V2_TASKS", []);
 
   const [searchList, setSearchList] = useState(tasks);
 
   const findTaskIndex = (id) => {
-    return tasks.findIndex((task) => task.text === id);
-  }
+    return tasks.findIndex((task) => task.id === id);
+  };
 
-  const deleteTask = (text) => {
-    const indexFilterTask = findTaskIndex(text);
+  const deleteTask = (id) => {
+    const indexFilterTask = findTaskIndex(id);
 
     const copyTasks = [...tasks];
 
@@ -41,8 +31,8 @@ const TaskProvider = ({ children }) => {
     setTasks(copyTasks);
   };
 
-  const completeTask = (text) => {
-    const indexFilterTask = findTaskIndex(text);
+  const completeTask = (id) => {
+    const indexFilterTask = findTaskIndex(id);
 
     const copyTasks = [...tasks];
 
@@ -51,8 +41,8 @@ const TaskProvider = ({ children }) => {
     setTasks(copyTasks);
   };
 
-  const unCompleteTask = (text) => {
-    const indexFilterTask = findTaskIndex(text);
+  const unCompleteTask = (id) => {
+    const indexFilterTask = findTaskIndex(id);
 
     const copyTasks = [...tasks];
 
@@ -60,16 +50,33 @@ const TaskProvider = ({ children }) => {
     setTasks(copyTasks);
   };
 
-  const toggleCompleteTask = (text) => {
-    const indexFilterTask = findTaskIndex(text);
+  const updateTaskText = (id, newText) => {
+    const indexFilterTask = findTaskIndex(id);
 
     const copyTasks = [...tasks];
 
-    copyTasks[indexFilterTask].completed = !copyTasks[indexFilterTask].completed;
+    copyTasks[indexFilterTask].text = newText;
+    setTasks(copyTasks);
+  };
+
+  const toggleCompleteTask = (id) => {
+    const indexFilterTask = findTaskIndex(id);
+
+    const copyTasks = [...tasks];
+
+    copyTasks[indexFilterTask].completed =
+      !copyTasks[indexFilterTask].completed;
     setTasks(copyTasks);
   };
 
   const createTask = (text) => {
+
+    const taskTemplate = {
+      completed: false,
+      id: nanoid(),
+      text: "my Task",
+    };
+
     const copyTasks = [...tasks];
     copyTasks.push({ ...taskTemplate, text: text });
 
@@ -88,7 +95,8 @@ const TaskProvider = ({ children }) => {
         unCompleteTask,
         deleteTask,
         createTask,
-        toggleCompleteTask
+        toggleCompleteTask,
+        updateTaskText,
       }}
     >
       {children}

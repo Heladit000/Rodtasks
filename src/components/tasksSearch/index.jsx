@@ -39,7 +39,8 @@ const TasksSearch = () => {
       <input
         value={searchValue}
         onChange={handleSearch}
-        placeholder="write on me"
+        placeholder=" 🔎 Search tasks..."
+        className="default__input"
       />
     </div>
   );

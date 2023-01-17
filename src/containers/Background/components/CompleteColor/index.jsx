@@ -10,12 +10,12 @@ const CompleteColor = () => {
 
   const porcentCompleted = 100/tasks.length;
   const heightCompleted = porcentCompleted*completedTasks.length
-
+  
   return (
     <div
       className="complete-color"
       style={{
-        height: `${100-heightCompleted}%`,
+        height: `${tasks.length > 0 ? (100-heightCompleted) : 0}%`
       }}
     ></div>
   );

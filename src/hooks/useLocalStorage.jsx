@@ -34,7 +34,7 @@ import { useEffect, useState } from "react";
   
         setLoading(true);
   
-      }, 1000);
+      }, 4000);
   
     }, [itemName, defaultItems]);
   

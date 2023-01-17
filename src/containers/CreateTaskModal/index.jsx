@@ -58,8 +58,8 @@ const CreateTaskModal = () => {
               value={taskTextValue}
             />
             <div>
-              <button onClick={handleExit}>Exit</button>
-              <button type="submit">Create</button>
+              <button onClick={handleExit} className="default__button default__button-warning">Exit</button>
+              <button type="submit" className="default__button">Create</button>
             </div>
             <p
               className={

@@ -1,6 +1,6 @@
 {
   "name": "rodtasks",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "task manager made in React.js",
   "main": "webpack.config.dev.js",
   "scripts": {
@@ -31,7 +31,9 @@
     "html-webpack-plugin": "^5.5.0",
     "ip": "^1.1.8",
     "mini-css-extract-plugin": "^2.7.2",
+    "nanoid": "^4.0.0",
     "path": "^0.12.7",
+    "prettier-plugin-css-order": "^1.3.0",
     "react-content-loader": "^6.2.0",
     "react-textarea-autosize": "^8.4.0",
     "sass": "^1.57.1",
@@ -42,6 +44,7 @@
     "webpack-messages": "^2.0.4"
   },
   "dependencies": {
+    "animate.css": "^4.1.1",
     "dotenv-webpack": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
