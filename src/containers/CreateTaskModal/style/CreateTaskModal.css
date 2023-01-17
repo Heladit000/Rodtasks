@@ -4,3 +4,15 @@
   backdrop-filter: blur(2px);
   min-height: 20em;
 }
+
+.create-task__text-area {
+  resize: none;
+  min-height: 4em;
+}
+
+.create-task__error-text {
+  color: #fd1e1e;
+  background: #1414143a;
+  padding: 1em;
+  border-radius: 4px;
+}

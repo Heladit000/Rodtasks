@@ -10,6 +10,7 @@ import "./style/App.css";
 import { TaskContext } from "./context/taskContext";
 import CreateTaskModal from "./containers/CreateTaskModal";
 import TaskLoader from "./containers/tasksList/taskLoader";
+import Background from "./containers/Background";
 
 
 const App = () => {
@@ -17,6 +18,8 @@ const App = () => {
   const { tasks, error, loading, searchList } = useContext(TaskContext);
 
   return (
+    <>
+    <Background/>
     <div className="tasks-container">
       <div>
         <TasksCounter />
@@ -49,6 +52,8 @@ const App = () => {
         <CreateTaskModal />
       </div>
     </div>
+    </>
+    
   );
 }
 

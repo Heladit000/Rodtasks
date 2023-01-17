@@ -1,0 +1,9 @@
+.complete-color {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    backdrop-filter: grayscale(200%);
+    background: #000000c0;
+    height: 90%;
+    transition: .4s;
+}

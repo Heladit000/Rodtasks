@@ -1,32 +1,30 @@
 .create-task-button {
   position: fixed;
-  top: 86%;
-  left: 77%;
+  top: 88%;
   background-color: #00b7ff;
   box-shadow: -2px -2px 4px #0000007e;
   border: 0;
   border-radius: 40%;
   color: white;
-  width: 5em;
-  height: 5em;
+  width: 4em;
+  height: 4em;
   cursor: pointer;
   user-select: none;
   z-index: 2;
   transition: 0.4s;
-
+  left: 77%;
 }
 
 .create-task-button__icon {
   fill: white;
   stroke: white;
   transition: 0.4s;
-
 }
 
 .create-task-button:hover .create-task-button__icon {
   transform: rotate(90deg);
 }
-  
+
 .create-task-button-close {
   transform: rotate(45deg);
   background-color: #ff0000;

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useContext } from "react";
+import TextareaAutosize from "react-textarea-autosize";
 
 import { ModalContext } from "../../context/modalContext";
 import { TaskContext } from "../../context/taskContext";
@@ -12,6 +13,14 @@ const CreateTaskModal = () => {
   const { createTask } = useContext(TaskContext);
 
   const [taskTextValue, setTaskTextValue] = useState("");
+  const [errorText, setErrorText] = useState("");
+
+
+  useEffect(()=>{
+    if(!viewModal){
+      setErrorText("");
+    }
+  },[viewModal])
 
   const handleExit = () => {
     disableModal();
@@ -20,11 +29,16 @@ const CreateTaskModal = () => {
   const handleCreate = (e) => {
     e.preventDefault();
 
-    createTask(taskTextValue);
+    if (taskTextValue.length !== 0) {
+      createTask(taskTextValue);
 
-    setTaskTextValue("");
+      setTaskTextValue("");
 
-    disableModal();
+      disableModal();
+      setErrorText("");
+    } else {
+      setErrorText("You need write a text for your task!");
+    }
   };
 
   const handleOnChange = (e) => {
@@ -34,12 +48,12 @@ const CreateTaskModal = () => {
   return (
     <>
       {viewModal ? (
-      <Modal>
+        <Modal>
           <form onSubmit={handleCreate} className="create-task">
             <h1>Create new Task</h1>
-            <input
-              type="text"
-              placeholder="Write the name here."
+            <TextareaAutosize
+              className="default__input create-task__text-area"
+              placeholder="Create a React project..."
               onChange={handleOnChange}
               value={taskTextValue}
             />
@@ -47,6 +61,13 @@ const CreateTaskModal = () => {
               <button onClick={handleExit}>Exit</button>
               <button type="submit">Create</button>
             </div>
+            <p
+              className={
+                errorText.length !== 0 ? "create-task__error-text" : ""
+              }
+            >
+              {errorText}
+            </p>
           </form>
         </Modal>
       ) : (

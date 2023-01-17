@@ -27,8 +27,12 @@ const TaskProvider = ({ children }) => {
 
   const [searchList, setSearchList] = useState(tasks);
 
+  const findTaskIndex = (id) => {
+    return tasks.findIndex((task) => task.text === id);
+  }
+
   const deleteTask = (text) => {
-    const indexFilterTask = tasks.findIndex((task) => task.text === text);
+    const indexFilterTask = findTaskIndex(text);
 
     const copyTasks = [...tasks];
 
@@ -38,12 +42,30 @@ const TaskProvider = ({ children }) => {
   };
 
   const completeTask = (text) => {
-    const indexFilterTask = tasks.findIndex((task) => task.text === text);
+    const indexFilterTask = findTaskIndex(text);
 
     const copyTasks = [...tasks];
 
     copyTasks[indexFilterTask].completed = true;
 
+    setTasks(copyTasks);
+  };
+
+  const unCompleteTask = (text) => {
+    const indexFilterTask = findTaskIndex(text);
+
+    const copyTasks = [...tasks];
+
+    copyTasks[indexFilterTask].completed = false;
+    setTasks(copyTasks);
+  };
+
+  const toggleCompleteTask = (text) => {
+    const indexFilterTask = findTaskIndex(text);
+
+    const copyTasks = [...tasks];
+
+    copyTasks[indexFilterTask].completed = !copyTasks[indexFilterTask].completed;
     setTasks(copyTasks);
   };
 
@@ -63,8 +85,10 @@ const TaskProvider = ({ children }) => {
         searchList,
         setSearchList,
         completeTask,
+        unCompleteTask,
         deleteTask,
-        createTask
+        createTask,
+        toggleCompleteTask
       }}
     >
       {children}

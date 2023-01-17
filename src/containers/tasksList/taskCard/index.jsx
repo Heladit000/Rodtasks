@@ -1,20 +1,19 @@
 import React from "react";
 import { useContext } from "react";
-import { ReactSVG } from "react-svg";
-
 import { TaskContext } from "../../../context/taskContext";
+
 import CheckIcon from "../../../icons/check__icon.svg";
 import "./style/TaskCard.css";
 
 const TaskCard = ({ text, completed }) => {
-  const { completeTask, deleteTask } = useContext(TaskContext);
+  const { toggleCompleteTask, deleteTask} = useContext(TaskContext);
 
   const handleDelete = () => {
     deleteTask(text);
   };
 
   const handleComplete = () => {
-    completeTask(text);
+    toggleCompleteTask(text);
   };
 
   return (
@@ -30,7 +29,7 @@ const TaskCard = ({ text, completed }) => {
           }`}
           onClick={handleComplete}
         >
-          <ReactSVG src={CheckIcon} />
+          <CheckIcon className="taskCard-checkbox__icon"/>
         </div>
       </span>
       <p className={completed ? "taskCard__text-completed" : undefined}>

@@ -21,7 +21,7 @@ h1 {
   color: white;
 }
 
-input {
+.default__input {
   border-radius: 4px;
   width: 100%;
   height: 2.5em;
@@ -30,9 +30,10 @@ input {
   border: 0;
   color: white;
   outline-width: 0;
+  padding: 0.5em;
 }
 
-input:hover {
+.default__input:hover {
   background-color: black;
   width: 105%;
 }
