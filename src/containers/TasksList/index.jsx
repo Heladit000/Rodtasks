@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 
 import { TaskContext } from "@context/taskContext";
 
-import TaskCard from "./TaskCard";
-import Taskloader from "./TaskLoader";
+import TaskCard from "./components/TaskCard";
+import Taskloader from "./components/TaskLoader";
 import "./style/TasksList.scss";
 import CreateTaskButton from "@components/createTaskButton";
 
