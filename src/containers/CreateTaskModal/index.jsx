@@ -3,24 +3,16 @@ import { useState } from "react";
 import { useContext } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 
-import { ModalContext } from "../../context/modalContext";
-import { TaskContext } from "../../context/taskContext";
-import Modal from "../Modal";
-import "./style/CreateTaskModal.css";
+import { ModalContext } from "@context/modalContext";
+import { TaskContext } from "@context/taskContext";
+import Modal from "@containers/Modal";
+import "./style/CreateTaskModal.scss";
 
 const CreateTaskModal = () => {
   const { viewModal, disableModal } = useContext(ModalContext);
   const { createTask } = useContext(TaskContext);
 
   const [taskTextValue, setTaskTextValue] = useState("");
-  const [errorText, setErrorText] = useState("");
-
-
-  useEffect(()=>{
-    if(!viewModal){
-      setErrorText("");
-    }
-  },[viewModal])
 
   const handleExit = () => {
     disableModal();
@@ -35,9 +27,6 @@ const CreateTaskModal = () => {
       setTaskTextValue("");
 
       disableModal();
-      setErrorText("");
-    } else {
-      setErrorText("You need write a text for your task!");
     }
   };
 
@@ -56,18 +45,23 @@ const CreateTaskModal = () => {
               placeholder="Create a React project..."
               onChange={handleOnChange}
               value={taskTextValue}
+              maxRows={10}
             />
             <div>
-              <button onClick={handleExit} className="default__button default__button-warning">Exit</button>
-              <button type="submit" className="default__button">Create</button>
+              <button
+                onClick={handleExit}
+                className="default__button default__button-warning"
+              >
+                Exit
+              </button>
+              <button
+                type="submit"
+                className="default__button"
+                disabled={taskTextValue.length === 0 ? true : false}
+              >
+                Create
+              </button>
             </div>
-            <p
-              className={
-                errorText.length !== 0 ? "create-task__error-text" : ""
-              }
-            >
-              {errorText}
-            </p>
           </form>
         </Modal>
       ) : (

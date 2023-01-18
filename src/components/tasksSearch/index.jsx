@@ -2,9 +2,9 @@ import React from "react";
 import { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { TaskContext } from "../../context/taskContext";
+import { TaskContext } from "@context/taskContext";
 
-import "./style/TasksSearch.css";
+import "./style/TasksSearch.scss";
 
 const TasksSearch = () => {
 

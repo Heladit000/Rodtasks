@@ -1,0 +1,26 @@
+@import "@styles/colors";
+@import "@styles/responsive.scss";
+
+.create-task {
+  backdrop-filter: blur(2px);
+  background: lighten($semi-opacity-color, 10%);
+  padding: 1em;
+  min-height: 20em;
+
+  @include desktop {
+    width: 40%;
+  }
+
+  &__text-area {
+    min-height: 4em;
+    resize: none;
+  }
+
+  &__error-text {
+    border-radius: 4px;
+    background: $opacity-color;
+    padding: 1em;
+    color: $warning-color;
+  }
+
+}

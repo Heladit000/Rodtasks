@@ -1,0 +1,12 @@
+@import "@styles/colors";
+.modal-container {
+  display: grid;
+  position: fixed;
+  top: 0;
+  align-items: center;
+  justify-items: center;
+  background: $semi-opacity-color;
+  padding: 1em;
+  width: 100vw;
+  height: 100vh;
+}

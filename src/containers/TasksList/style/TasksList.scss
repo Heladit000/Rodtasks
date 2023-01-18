@@ -13,4 +13,10 @@
   @include desktop {
     max-height: 70%;
   }
+
+    &__no-tasks {
+      &--button {
+        height: 2.5em;
+      }
+    }
 }

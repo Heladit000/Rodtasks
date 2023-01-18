@@ -1,0 +1,108 @@
+@import "@styles/colors";
+
+.task-card {
+  display: grid;
+  position: relative;
+  grid-template-columns: auto 77% 5%;
+  justify-content: center;
+  align-items: center;
+  align-items: center;
+  gap: 4%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #00000024;
+  border-radius: 4px;
+  width: 100%;
+  color: $primary-color;
+
+  &__delete-button {
+    align-self: baseline;
+    border-radius: 4px;
+
+    user-select: none;
+
+    &:hover {
+      color: $warning-color;
+    }
+
+    &-icon {
+      stroke: $warning-color;
+      transform: rotate(45deg);
+      opacity: 70%;
+      transition: 0.2s;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 100%;
+      }
+    }
+  }
+
+  &__checkbox {
+    stroke: #181818;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: start;
+    backdrop-filter: blur(20px);
+    transition: 0.2s;
+    cursor: pointer;
+    border-radius: 4px;
+    background: #2727273b;
+    aspect-ratio: 1 / 1;
+    width: 1.5em;
+    height: auto;
+    color: transparent;
+    user-select: none;
+    text-align: center;
+
+    &--check {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+
+      &-icon {
+        width: 100%;
+        height: 100%;
+      }
+
+      &-completed {
+        stroke: $primary-color;
+        cursor: default;
+        cursor: pointer;
+        background: transparent;
+
+        &:hover {
+          stroke: $primary-color;
+          color: currentColor;
+        }
+      }
+    }
+
+    &:hover {
+      stroke: white;
+    }
+
+    &__check {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__form {
+    width: 100%;
+
+    &--text {
+      resize: none;
+      color: $primary-color;
+
+      &-completed {
+        text-decoration: line-through;
+      }
+    }
+
+    &--edit-panel {
+      display: flex;
+    }
+  }
+}

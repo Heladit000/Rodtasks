@@ -1,6 +1,6 @@
 {
   "name": "rodtasks",
-  "version": "1.1.0",
+  "version": "2.1.0",
   "description": "task manager made in React.js",
   "main": "webpack.config.dev.js",
   "scripts": {
@@ -10,9 +10,9 @@
     "check-updates": "npx npm-check-updates -u",
     "pm2-serve": "npm run build && serve ./dist/index.html 8080 --name react-app",
     "commit": "git add . && gitmoji -c",
-    "commit-patch": "git add . && npm version patch --no-git-tag-version && gitmoji -c",
-    "commit-minor": "git add . && npm version minor --no-git-tag-version && gitmoji -c",
-    "commit-major": "git add . && npm version major --no-git-tag-version && gitmoji -c"
+    "commit-patch": "npm version patch --no-git-tag-version && git add . && gitmoji -c",
+    "commit-minor": "npm version minor --no-git-tag-version && git add . && gitmoji -c",
+    "commit-major": "npm version major --no-git-tag-version && git add . && gitmoji -c"
   },
   "keywords": [],
   "author": "heladit000",

@@ -2,9 +2,6 @@
 
 .create-task-button {
   -webkit-tap-highlight-color: transparent;
-  position: fixed;
-  right: 2%;
-  bottom: 2%;
 
   z-index: 2;
 
@@ -12,7 +9,7 @@
   cursor: pointer;
   margin: 0;
   outline: none;
-  box-shadow: -2px -2px 4px #0000007e;
+  box-shadow: 2px 2px 4px $opacity-color;
   border: 0;
   border-radius: 40%;
   background-color: $primary-color;
@@ -21,19 +18,23 @@
   height: 4em;
   color: white;
 
+  &-floating {
+    position: fixed;
+    right: 2%;
+    bottom: 2%;
+  }
+
   &:focus {
     outline: none;
     border: 0;
   }
 
-  &:hover &__icon{
-      transform: rotate(90deg);
+  &:hover &__icon {
+    transform: rotate(90deg);
   }
 
   &__icon {
-    fill: white;
     stroke: white;
-    transform: rotate(90deg);
     transition: 0.4s;
     width: 100%;
     height: 100%;
@@ -41,6 +42,6 @@
 
   &-close {
     transform: rotate(45deg);
-    background-color: $waring-color;
+    background-color: $warning-color;
   }
 }

@@ -1,22 +1,30 @@
 import React, { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
-import CompleteColor from "./components/CompleteColor";
-import "./style/Background.css";
+import ProgressColor from "./components/ProgressColor";
+import "./style/Background.scss";
+
+const imageAPIURL = `https://picsum.photos/${document.body.clientWidth}/${document.body.clientHeight}`;
 
 const Background = () => {
   const [backgroundImage, setBackgroundImage] = useState();
 
   useEffect(() => {
-    fetch(
-      `https://picsum.photos/${document.body.clientWidth}/${document.body.clientHeight}`
-    )
-      .then((response) => response.blob())
+    //get image
+    fetch(imageAPIURL)
+      .then((response) =>
+        //conver image to binary
+        response.blob()
+      )
       .then((imageBlob) => {
+        //create image
         const imageObjectURL = URL.createObjectURL(imageBlob);
+
         setBackgroundImage(imageObjectURL);
       });
   }, []);
-  return (
+
+  return createPortal(
     <div className="background">
       {backgroundImage && (
         <img
@@ -25,8 +33,12 @@ const Background = () => {
           className="background__image"
         />
       )}
-      <CompleteColor />
-    </div>
+
+      {/* tasks progress */}
+      <ProgressColor />
+
+    </div>,
+    document.getElementById("background")
   );
 };
 
