@@ -1,18 +1,12 @@
-name: NodeJS with Webpack
+name: Build and Deploy!
 
-on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+on: [push]
+permissions:
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [19.x]
 
     steps:
     - uses: actions/checkout@v3
@@ -20,7 +14,7 @@ jobs:
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 19.x
         
     - name: Build
       run: |
@@ -31,4 +25,13 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@v4.4.1
       with:
         folder: dist
+        
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        with:
+          folder: dist
+    
  
