@@ -1,7 +1,10 @@
 @import "@styles/colors";
+@import "@styles/responsive.scss";
 
 html {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+
 }
 *,
 *:before,
@@ -11,7 +14,7 @@ html {
 
 ::-webkit-scrollbar {
 
-  width: 10px;
+  width: 4px;
 
   &-thumb {
     background: $opacity-color;

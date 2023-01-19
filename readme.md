@@ -1,34 +1,40 @@
-# React default template
+# ☑️Rodtasks
+    
+>Simple tasks app developed in React.js with Webpack🖊️
 
-My personal start template to create a React project
 
-- Webpack
-- Sass
-- Dev server
-- Babel
-- Dotenv
-- Gitignore
-- React
-- Prettier
+## install
+requires [Node.js](https://nodejs.org/) v19+ to run.
 
-### install:
+clone the repository
 
-    npm install
+```sh
+git clone ---
+```
 
-### Scripts:
+Install all dependencies
 
- > **Run scripts with:** npm run [script-name]
+```sh
+npm install
+```
 
-|script-name|description|
-|---|---|
-|check-updates|Search for dependencies updates|
-|build|Compiles the project in dist folder|
-|start|Serve Webpack dev server|
-|commit|Add changes and commit|
-|commit-patch|Add changes, update package patch version and commit|
-|commit-minor|Add changes, update package minor version and commit|
-|commit-major|Add changes, update package major version and commit|
+## Build and development 
+### production mode
+Run in production mode 
+> you can open the build in `dist/index.html`
 
-------------
+```sh
+npm run build
+```
 
-Change the name of the project and the remote repository and start code!
+### developing mode
+Run in developing mode 
+> automatic changes and live server
+
+```sh
+npm run start
+```
+
+## License
+
+ISC

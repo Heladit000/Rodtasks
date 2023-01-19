@@ -1,8 +1,7 @@
 @import "@styles/colors";
+@import "@styles/responsive.scss";
 
 .create-task-button {
-  -webkit-tap-highlight-color: transparent;
-
   z-index: 2;
 
   transition: 0.4s;
@@ -20,8 +19,14 @@
 
   &-floating {
     position: fixed;
-    right: 2%;
+    right: 3%;
     bottom: 2%;
+
+    @include desktop {
+      right: 10%;
+    bottom: 6%;
+
+    }
   }
 
   &:focus {

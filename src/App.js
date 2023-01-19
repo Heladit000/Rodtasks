@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 
-import CreateTaskButton from "@components/createTaskButton";
-import TasksCounter from "@components/tasksCounter";
-import TasksSearch from "@components/tasksSearch";
+import CreateTaskButton from "@components/CreateTaskButton";
+import TasksCounter from "@components/TasksCounter";
+import TasksSearch from "@components/TasksSearch";
 import TasksList from "@containers/TasksList";
 import "@styles/App.scss";
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
+import BackgroundPanel from "./components/BackgroundPanel";
 import ProgressColor from "./components/ProgressColor";
 import "./style/Background.scss";
 
@@ -37,6 +38,7 @@ const Background = () => {
       {/* tasks progress */}
       <ProgressColor />
 
+      <BackgroundPanel />
     </div>,
     document.getElementById("background")
   );

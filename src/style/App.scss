@@ -5,7 +5,9 @@
     justify-content: center;
     flex-direction: column;
     padding: 1.2em;
-    height: 100vh;
+    z-index: 1;
+    position: relative;
+    height: 95vh;
 
     @include desktop {
         padding: 1.2em 20em;

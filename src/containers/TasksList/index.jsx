@@ -5,7 +5,7 @@ import { TaskContext } from "@context/taskContext";
 import TaskCard from "./components/TaskCard";
 import Taskloader from "./components/TaskLoader";
 import "./style/TasksList.scss";
-import CreateTaskButton from "@components/createTaskButton";
+import CreateTaskButton from "@components/CreateTaskButton";
 
 
 const TasksList = () => {
