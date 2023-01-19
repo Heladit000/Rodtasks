@@ -16,7 +16,7 @@ const BackgroundPanel = () => {
         <TwitterIcon className="background-panel__link--icon" />
       </a>
       <a
-        href=""
+        href="https://github.com/Heladit000/Rodtasks"
         className="background-panel__link"
       >
         <GitHubIcon className="background-panel__link--icon" />
