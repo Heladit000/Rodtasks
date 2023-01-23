@@ -14,17 +14,17 @@ const App = () => {
 
   return (
     <>
-    <Background/>
-    <div className="tasks-container">
+      <Background />
+      <div className="tasks-container">
         <TasksCounter />
         <TasksSearch />
-        <TasksList/>
-
-        <CreateTaskButton floating/>
+        <TasksList />
         <CreateTaskModal />
-    </div>
+      </div>
+      <CreateTaskButton floating />
+
     </>
-    
+
   );
 }
 
